@@ -11,12 +11,13 @@ with open(csv_election_data) as csvfile:
     csv_header = next(csvreader)
     for row in csvreader:
         totalvotes += 1 #total votes 
-        candidates = (row[2].strip()) #pulls candidate names 
+        candidates = (row[2].strip()) #pulls each candidate recieving votes
         if candidates in candidate_votes: #counts votes for each candidate
             candidate_votes[candidates] += 1
         else:
             candidate_votes[candidates] = 1
 
+#each result.append is appending print lines for the text file 
 result.append("Election Results")
 result.append("---------------------")
 result.append(f"Total Votes: {totalvotes}")
