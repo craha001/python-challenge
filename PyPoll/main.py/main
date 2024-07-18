@@ -2,17 +2,17 @@ import os
 import csv
 
 totalvotes = 0
-candidate_votes = {}
-result = []
+candidate_votes = {} #dictionary for candidate vote values
+result = [] # list set up for text file
 
 csv_election_data = os.path.join('PyPoll','Resources', 'election_data.csv')
 with open(csv_election_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
     for row in csvreader:
-        totalvotes += 1
-        candidates = (row[2].strip())
-        if candidates in candidate_votes:
+        totalvotes += 1 #total votes 
+        candidates = (row[2].strip()) #pulls candidate names 
+        if candidates in candidate_votes: #counts votes for each candidate
             candidate_votes[candidates] += 1
         else:
             candidate_votes[candidates] = 1
@@ -22,16 +22,16 @@ result.append("---------------------")
 result.append(f"Total Votes: {totalvotes}")
 result.append("---------------------")
 
-for candidates, candidate_count in candidate_votes.items():
+for candidates, candidate_count in candidate_votes.items(): #calculates percentage of votes for each candidate
     percent_candidate = round(((candidate_count / totalvotes) * 100),3)
     result.append(f"{candidates}: {percent_candidate}% ({candidate_count})")
 
-win = max(candidate_votes, key=candidate_votes.get)
+win = max(candidate_votes, key=candidate_votes.get) #calculates candidate with most votes
 result.append("---------------------")
 result.append(f"Winner: {win}")
 result.append("---------------------")
 
-result_file = os.path.join('PyPoll','analysis','election_results.txt')
+result_file = os.path.join('PyPoll','analysis','election_results.txt') #result file as text file
 with open(result_file, 'w') as file:
     for line in result:
         file.write(line + "\n")
