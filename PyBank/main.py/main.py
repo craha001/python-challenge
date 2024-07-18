@@ -46,7 +46,7 @@ results = [
     f"Greatest Decrease in Profits: {gmin_date} ${gdec_profits}"
 ]
 
-#prints each line from above and prints them into line
+#prints each line from above 
 for line in results:
     print(line)
 
