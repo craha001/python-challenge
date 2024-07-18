@@ -23,6 +23,7 @@ result.append("---------------------")
 result.append(f"Total Votes: {totalvotes}")
 result.append("---------------------")
 
+
 for candidates, candidate_count in candidate_votes.items(): #calculates percentage of votes for each candidate
     percent_candidate = round(((candidate_count / totalvotes) * 100),3)
     result.append(f"{candidates}: {percent_candidate}% ({candidate_count})")
@@ -31,6 +32,10 @@ win = max(candidate_votes, key=candidate_votes.get) #calculates candidate with m
 result.append("---------------------")
 result.append(f"Winner: {win}")
 result.append("---------------------")
+
+#prints results list 
+for line in result:
+    print(line)
 
 result_file = os.path.join('PyPoll','analysis','election_results.txt') #result file as text file
 with open(result_file, 'w') as file:
