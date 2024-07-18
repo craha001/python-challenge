@@ -5,7 +5,7 @@ totalvotes = 0
 candidate_votes = {} #dictionary for candidate vote values
 result = [] # list set up for text file
 
-csv_election_data = os.path.join('PyPoll','Resources', 'election_data.csv')
+csv_election_data = os.path.join('PyPoll','Resources', 'election_data.csv') #path to csv file
 with open(csv_election_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
