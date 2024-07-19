@@ -20,7 +20,7 @@ with open(csv_budget_data) as csvfile:
     csv_header = next(csvreader)
     for row in csvreader:
         totalmonths += 1 #total months
-        totalprofits += int(row[1]) #total profits
+        totalprofits += int(row[1]) #total amount profit/loss
         profit_loss.append(int(row[1])) #profit/loss list
         mtm_changes.append(row[0]) #dates list
 
